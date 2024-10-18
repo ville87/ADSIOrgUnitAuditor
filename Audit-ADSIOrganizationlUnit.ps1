@@ -18,7 +18,8 @@
     https://github.com/ville87/ADSIOrgUnitAuditor
 
 .EXAMPLE
-    TODO
+    Run the script in the current domain user context and export the results to a CSV:
+    .\Audit-ADSIOrganizationlUnit.ps1 -OUName newuserou -exportasCSV $true
 #>
 
 #################################### PARAMETERS ###########################################
