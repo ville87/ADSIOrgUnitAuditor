@@ -8,11 +8,7 @@
 
     File-Name:  Audit-ADSIOrganizationlUnit.ps1
     Author:     Ville Koch (@vegvisir87, https://github.com/ville87)
-    Version:    v1.1 (19.10.2024)
-
-    TODO:
-    - Add Parameter sets for better handling required parameters
-    - Add parameters to further specify types of access control rights (other than GenericAll and CreateChilds)
+    Version:    v1.2 (22.10.2024)
 
 .LINK
     https://github.com/ville87/ADSIOrgUnitAuditor
@@ -20,6 +16,9 @@
 .EXAMPLE
     Run the script in the current domain user context and export the results to a CSV:
     .\Audit-ADSIOrganizationlUnit.ps1 -OUName newuserou -exportasCSV $true
+
+    Run the script against a target domain with provided credentials (credentials are prompted) and export the results as CSV:   
+    .\Audit-ADSIOrganizationlUnit.ps1 -OUName NewUserOU -domain lab.local -DCIP 10.0.0.4 -ExportasCSV $true
 #>
 
 #################################### PARAMETERS ###########################################
@@ -46,7 +45,7 @@ Param (
 
     # exportasCSV: If set to true, will export results as CSV file
     [Parameter(Mandatory=$false)]
-    [bool]$exportasCSV = $false
+    [bool]$ExportasCSV = $false
 )
 
 Begin {
